@@ -4,8 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My To Do List</title>
+    <style> html{ opacity: 0; visibility: hidden } </style>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+    </style>
 </head>
 <body>
-    
+    <div id="container">
+        <h1 inert>To Do List!</h1>
+
+        <div class="project" data-index="0">
+            <h3>Default Project</h3>
+            <p>You can use this project to test this app!asdasdasdasd</p>
+        </div>
+
+        <div class="btn-container">
+            <button id="nproject" class="create-btn">New Project</button>
+            <button id="ntodo" class="create-btn">New To Do</button>
+        </div>
+    </div>
 </body>
 </html>
