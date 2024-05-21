@@ -83,6 +83,8 @@ button:active{ background: #cccccc; }
     background-color: #fff;
     cursor: pointer;
     transition: transform 0.2s;
+    > h3 { margin-bottom: 0; }
+    > p { height: 100%; overflow: auto; }
 }
 
 .project:hover{
@@ -91,23 +93,26 @@ button:active{ background: #cccccc; }
     outline: 3px dashed var(--bg-color)
 }
 
-.project p{
-    height: 100%;
-    overflow: auto;
-}
-
 dialog[open]{
     width: 50%;
-    height: 64%;
+    height: 31vw;
     padding: 2.8%;
     box-sizing: border-box;
     border: 3px dashed black;
     border-radius: var(--round-borders);
 }
 
+dialog[open]#newProject{ height: 28vw; }
+
 dialog:focus-visible{ outline: none; }
 
 dialog::backdrop{ background-color: rgb(0 0 0 / 45%); }
+
+.fieldset-project{
+    > .fcontrols{
+        grid-column: 1 / -1;
+    }
+}
 
 form,
 fieldset{
@@ -133,7 +138,7 @@ legend {
     margin-bottom: 2vw;
 }
 
-label{ font-size: 1.3vw; }
+label{ font-size: 1.2vw; }
 
 input{
     width: 97%;
@@ -158,8 +163,8 @@ select{ height: 100%; }
 }
 
 .completed.fcontrols{
-    gap: 0.3vw;
-    place-items: center;
+    /* gap: 0.3vw;
+    place-items: center; */
     height: 100%;
     /* grid-column: 1 / -1;  */
     > input{ width: 13%; }
