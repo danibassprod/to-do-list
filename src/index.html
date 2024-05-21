@@ -8,6 +8,88 @@
     <style>  @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');</style>
 </head>
 <body>
+    <div class="forms">
+
+        <dialog id="newProject">
+            <form method="dialog">
+
+                <fieldset class="fieldset-project">
+                    <legend>Create new Project</legend>
+                    <div class="title fcontrols">
+                        <label for="title">Title</label>
+                        <input class="project-title" minlength="5" required type="text" id="title">
+                    </div>
+
+                    <div class="desc fcontrols">
+                        <label for="description">Description</label>
+                        <input class="project-desc" minlength="5" required type="text" name="desc" id="description">
+                    </div>
+                </fieldset>
+
+                <div class="form-btn">
+                    <button class="send send-project" type="submit">Send</button>
+                    <button class="cancel" type="reset">Cancel</button>
+                </div>
+            </form>
+        </dialog>
+
+        <dialog id="newTodo">
+
+            <form method="dialog">
+
+                    <fieldset>
+                        <legend>Create new To Do</legend>
+                        <div class="title fcontrols">
+                            <label for="title">Title</label>
+                            <input class="todo-title" minlength="3" required type="text" id="title">
+                        </div>
+
+                        <div class="desc fcontrols">
+                            <label for="desc">Description</label>
+                            <input class="todo-desc" minlength="5" required type="text" id="desc">
+                        </div>
+
+                        <div class="due-date fcontrols">
+                            <label for="duedate">Due Date</label>
+                            <input class="todo-duedate" type="date" id="duedate">
+                        </div>
+
+                        <div class="project-selector fcontrols">
+                            <label for="project">Project</label>
+                            <select class="todo-title" name="project" id="project">
+                                <option value="default" class="project-option">Default</option>
+                            </select>
+                        </div>
+
+                        <div class="priority fcontrols">
+                            <label for="priority">Priority</label>
+                            <select class="todo-priority" name="priority" id="priority">
+                                <option value="1" class="1">1</option>
+                                <option value="2" class="2">2</option>
+                                <option value="3" class="3">3</option>
+                                <option value="4" class="4">4</option>
+                                <option value="5" class="5">5</option>
+                            </select>
+                        </div>
+
+                        <div class="completed fcontrols">
+                            <label for="completed">Completed</label>
+                            <select class="todo-completed" name="completed" id="completed">
+                                <option value="true">Yes</option>
+                                <option selected value="false">No</option>
+                            </select>
+                        </div>
+                    </fieldset>
+
+                <div class="form-btn">
+                    <button class="send send-todo" type="submit">Send</button>
+                    <button class="cancel" type="reset">Cancel</button>
+                </div>
+            </form>
+        </dialog>
+
+    </div>
+
     <div id="container">
         <h1 inert>To Do List!</h1>
 
@@ -15,73 +97,11 @@
             <h3>Default Project</h3>
             <p>You can use this project to test this app!asdasdasdasd</p>
         </div>
+    </div>
 
-        <div class="forms">
-
-            <dialog id="newProject">
-                <form method="dialog">
-
-                </form>
-            </dialog>
-
-            <dialog id="newTodo">
-
-                <form method="dialog">
-
-                        <fieldset>
-                            <legend>Create new To Do</legend>
-                            <div class="title fcontrols">
-                                <label for="title">Title</label>
-                                <input required type="text" id="title">
-                            </div>
-
-                            <div class="desc fcontrols">
-                                <label for="desc">Description</label>
-                                <input required type="text" id="desc">
-                            </div>
-
-                            <div class="due-date fcontrols">
-                                <label for="duedate">Due Date</label>
-                                <input type="date" id="duedate">
-                            </div>
-
-                            <div class="project-selector fcontrols">
-                                <label for="project">Project</label>
-                                <select name="project" id="project">
-                                    <option value="default" class="project-option">Default</option>
-                                </select>
-                            </div>
-
-                            <div class="priority fcontrols">
-                                <label for="priority">Priority</label>
-                                <select name="priority" id="priority">
-                                    <option value="1" class="1">1</option>
-                                    <option value="2" class="2">2</option>
-                                    <option value="3" class="3">3</option>
-                                    <option value="4" class="4">4</option>
-                                    <option value="5" class="5">5</option>
-                                </select>
-                            </div>
-
-                            <div class="completed fcontrols">
-                                <label for="completed">Completed</label>
-                                <input type="checkbox" id="completed">
-                            </div>
-                        </fieldset>
-
-                    <div class="form-btn">
-                        <button class="send" type="submit">Send</button>
-                        <button class="cancel" type="button">Cancel</button>
-                    </div>
-                </form>
-            </dialog>
-
-        </div>
-
-        <div class="btn-container">
-            <button id="nproject" class="create-btn">New Project</button>
-            <button id="ntodo" class="create-btn">New To Do</button>
-        </div>
+    <div class="btn-container">
+        <button id="nproject" class="create-btn">New Project</button>
+        <button id="ntodo" class="create-btn">New To Do</button>
     </div>
 </body>
 </html>
