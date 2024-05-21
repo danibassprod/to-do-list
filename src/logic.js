@@ -1,10 +1,11 @@
 class CreateToDo {
-    constructor(title = 'No title provided.', desc = 'No description provided', date = 'No date provided.', dueDate = 'No due date provided.', priority = 0) {
+    constructor(title = 'No title provided.', desc = 'No description provided', date = new Date().getFullYear(), dueDate = 'No due date provided.', priority = 0, completed = false) {
         this.title = title,
         this.desc = desc,
         this.date = date,
         this.dueDate = dueDate,
-        this.priority = priority
+        this.priority = priority,
+        this.completed = completed
     }
 }
 
