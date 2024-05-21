@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My To Do List</title>
     <style> html{ opacity: 0; visibility: hidden } </style>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
-    </style>
+    <style>  @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');</style>
 </head>
 <body>
     <div id="container">
@@ -16,6 +14,68 @@
         <div class="project" data-index="0">
             <h3>Default Project</h3>
             <p>You can use this project to test this app!asdasdasdasd</p>
+        </div>
+
+        <div class="forms">
+
+            <dialog id="newProject">
+                <form method="dialog">
+
+                </form>
+            </dialog>
+
+            <dialog id="newTodo">
+
+                <form method="dialog">
+
+                        <fieldset>
+                            <legend>Create new To Do</legend>
+                            <div class="title fcontrols">
+                                <label for="title">Title</label>
+                                <input required type="text" id="title">
+                            </div>
+
+                            <div class="desc fcontrols">
+                                <label for="desc">Description</label>
+                                <input required type="text" id="desc">
+                            </div>
+
+                            <div class="due-date fcontrols">
+                                <label for="duedate">Due Date</label>
+                                <input type="date" id="duedate">
+                            </div>
+
+                            <div class="project-selector fcontrols">
+                                <label for="project">Project</label>
+                                <select name="project" id="project">
+                                    <option value="default" class="project-option">Default</option>
+                                </select>
+                            </div>
+
+                            <div class="priority fcontrols">
+                                <label for="priority">Priority</label>
+                                <select name="priority" id="priority">
+                                    <option value="1" class="1">1</option>
+                                    <option value="2" class="2">2</option>
+                                    <option value="3" class="3">3</option>
+                                    <option value="4" class="4">4</option>
+                                    <option value="5" class="5">5</option>
+                                </select>
+                            </div>
+
+                            <div class="completed fcontrols">
+                                <label for="completed">Completed</label>
+                                <input type="checkbox" id="completed">
+                            </div>
+                        </fieldset>
+
+                    <div class="form-btn">
+                        <button class="send" type="submit">Send</button>
+                        <button class="cancel" type="button">Cancel</button>
+                    </div>
+                </form>
+            </dialog>
+
         </div>
 
         <div class="btn-container">
