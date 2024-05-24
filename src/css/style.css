@@ -132,6 +132,48 @@ fieldset {
     gap: 2vw;
 }
 
+#projectDisplay {
+    width: 60%;
+    height: 40vw;
+    overflow: auto;
+    > form { height:unset; } 
+    > fieldset {
+       display: grid;
+       grid-template-columns: repeat(3, 1fr);
+       grid-template-rows: repeat(auto-fill, minmax(50px, 1fr));
+       gap: 5px;
+    }
+}
+
+.todo {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 3fr 2fr 1fr;
+    justify-items: center;
+    gap: 10px;
+    outline: 1px solid black;
+    border-radius: var(--round-borders);
+    padding: 1%;
+    transition: transform 0.2s ease;
+    cursor: pointer;
+    box-shadow: 0px 5px 1px 1px rgb(0 0 0 / 22%);
+}
+
+.todo:hover{ 
+    transform: scale(1.05); 
+    outline: 2px solid var(--bg-color); 
+}
+
+.todo.pri-now p:last-child{ outline: 2px dashed white; }
+
+.pri-low{ background-color: #f4f3ff; }
+
+.pri-mid{ background-color: #cdc9ff; }
+
+.pri-high{ background-color: #a69ef5; }
+
+.pri-now{ background-color: var(--bg-color, #12111D); color: var(--color-white, white);}
+
 legend {
     font-size: 2.1vw;
     margin: auto;
