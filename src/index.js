@@ -1,8 +1,9 @@
 import './css/reset.css';
 import './css/style.css';
 import { CreateProject, CreateToDo } from './logic';
+// import { DOMElements } from './dom';
 
-const userProjects = {};
+export const userProjects = {};
 
 userProjects.defaultProject = new CreateProject(
     'Default Project', 
@@ -16,5 +17,3 @@ userProjects.defaultProject.todos.push(new CreateToDo(
     2025, 
     3)
 );
-
-console.log(userProjects);
