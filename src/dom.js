@@ -1,3 +1,6 @@
+import { userProjects } from ".";
+import { validationChecks } from "./logic";
+
 export const DOMElements = {
     container: document.querySelector('#container'),
     projects: document.querySelectorAll('.project'),
@@ -11,46 +14,62 @@ export const DOMElements = {
         }
     },
     forms: {
-        todoDialog: document.querySelector('#newTodo'),
-        todoInputs: {
+        projectDialog: document.querySelector('#newProject'),
+        projectInputs: {
             title: document.querySelector('.project-title'),
             desc: document.querySelector('.project-desc')
         },
-        projectDialog: document.querySelector('#newProject')
+        todoDialog: document.querySelector('#newTodo'),
+        todoInputs: {
+            title: document.querySelector('.todo-title'),
+            desc: document.querySelector('.todo-desc'),
+            dueDate: document.querySelector('.todo-duedate'),
+            priority: document.querySelector('#priority'),
+            project: document.querySelector('#project'),
+            completed: document.querySelector('#completed')
+        }
     }
 };
 
 const DOMHandler = {
     render: {
         project: function(){
-            
-            // several checks before rendering
-            const projectList = document.querySelectorAll('.project');
-            if (DOMElements.forms.todoInputs.title.value === '' && DOMElements.forms.todoInputs.desc.value === '') return
-            if (DOMElements.forms.todoInputs.title.value.length < 5 || DOMElements.forms.todoInputs.desc.value.length < 5) return
 
-            // rendering
+            if (validationChecks.checkNewProject() === 0) return
+            // if (validationChecks.checkForDuplicates() === 0) return
+
+            const projectList = document.querySelectorAll('.project');
+
             const projectNumb = projectList.length;
             const projectContainer = document.createElement('div');
-            projectContainer.dataset.index = projectNumb;
             projectContainer.classList.add('project');
+            projectContainer.dataset.index = projectNumb;
     
             const h3 = document.createElement('h3')
-            h3.textContent = DOMElements.forms.todoInputs.title.value;
+            h3.textContent = DOMElements.forms.projectInputs.title.value;
     
             const desc = document.createElement('p');
-            desc.textContent = DOMElements.forms.todoInputs.desc.value;
+            desc.textContent = DOMElements.forms.projectInputs.desc.value;
     
             projectContainer.appendChild(h3);
             projectContainer.appendChild(desc);
             
             DOMElements.container.appendChild(projectContainer);
-            
         }
     },
-    remove: {
-        
-    }
+
+    removeProjectList: function(){
+        const currentProjectList = document.querySelectorAll('.project-opt');
+        currentProjectList.forEach(project => DOMElements.forms.todoInputs.project.removeChild(project));
+    },
+
+    addProjectToList: function(){
+
+    },
+
+    projectContent: function(){},
+
+    remove: function(){}
 }
 
 DOMElements.buttons.newProject.addEventListener('click', () => { DOMElements.forms.projectDialog.showModal(); });
@@ -62,4 +81,8 @@ DOMElements.buttons.cancelBtns.forEach(btn => btn.addEventListener('click', () =
     DOMElements.forms.todoDialog.close();
 }));
 
-DOMElements.buttons.submit.project.addEventListener('click', () => { DOMHandler.render.project(); });
+DOMElements.buttons.submit.project.addEventListener('click', () => { 
+    DOMHandler.removeProjectList();
+    DOMHandler.render.project();
+    DOMHandler.addProjectToList();
+});
