@@ -51,32 +51,32 @@
 
                         <div class="due-date fcontrols">
                             <label for="duedate">Due Date</label>
-                            <input class="todo-duedate" type="date" id="duedate">
+                            <input class="todo-duedate" type="date" id="duedate" required>
                         </div>
 
                         <div class="project-selector fcontrols">
                             <label for="project">Project</label>
-                            <select class="todo-title" name="project" id="project">
-                                <option value="default" class="project-option">Default</option>
+                            <select class="todo-title" name="project" id="project" required>
+                                <option value="">Select a project</option>
+                                <option class="project-opt" value="default" class="project-option">Default</option>
                             </select>
                         </div>
 
                         <div class="priority fcontrols">
                             <label for="priority">Priority</label>
                             <select class="todo-priority" name="priority" id="priority">
-                                <option value="1" class="1">1</option>
-                                <option value="2" class="2">2</option>
-                                <option value="3" class="3">3</option>
-                                <option value="4" class="4">4</option>
-                                <option value="5" class="5">5</option>
+                                <option value="low" class="1">Low</option>
+                                <option value="mid" class="2">Mid</option>
+                                <option value="high" class="3">High</option>
+                                <option value="now" class="4">NOW</option>
                             </select>
                         </div>
 
                         <div class="completed fcontrols">
                             <label for="completed">Completed</label>
                             <select class="todo-completed" name="completed" id="completed">
-                                <option value="true">Yes</option>
-                                <option selected value="false">No</option>
+                                <option value="yes">Yes</option>
+                                <option selected value="no">No</option>
                             </select>
                         </div>
                     </fieldset>
