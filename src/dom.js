@@ -1,4 +1,4 @@
-import { userProjects } from ".";
+import { userProjects } from "./index.js";
 import { validationChecks } from "./logic";
 
 export const DOMElements = {
@@ -25,7 +25,7 @@ export const DOMElements = {
             desc: document.querySelector('.todo-desc'),
             dueDate: document.querySelector('.todo-duedate'),
             priority: document.querySelector('#priority'),
-            project: document.querySelector('#project'),
+            projectList: document.querySelector('#project'),
             completed: document.querySelector('#completed')
         }
     }
@@ -58,18 +58,23 @@ const DOMHandler = {
         }
     },
 
-    removeProjectList: function(){
+    addProjectListTodoForm: function(){
+
+        let arrayOfProjects = []
+
+        for (let key in userProjects) {
+            arrayOfProjects.push(userProjects[key].title)  
+        }
+
+        console.log(arrayOfProjects)
+        
+        console.log(userProjects)
+    },
+
+    removeProjectListTodoForm: function(){
         const currentProjectList = document.querySelectorAll('.project-opt');
-        currentProjectList.forEach(project => DOMElements.forms.todoInputs.project.removeChild(project));
-    },
-
-    addProjectToList: function(){
-
-    },
-
-    projectContent: function(){},
-
-    remove: function(){}
+        currentProjectList.forEach(project => DOMElements.forms.todoInputs.projectList.removeChild(project));
+    }
 }
 
 DOMElements.buttons.newProject.addEventListener('click', () => { DOMElements.forms.projectDialog.showModal(); });
@@ -82,7 +87,7 @@ DOMElements.buttons.cancelBtns.forEach(btn => btn.addEventListener('click', () =
 }));
 
 DOMElements.buttons.submit.project.addEventListener('click', () => { 
-    DOMHandler.removeProjectList();
+    DOMHandler.removeProjectListTodoForm();
     DOMHandler.render.project();
-    DOMHandler.addProjectToList();
+    DOMHandler.addProjectListTodoForm();
 });
