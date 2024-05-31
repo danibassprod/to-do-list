@@ -1,4 +1,3 @@
-import { userProjects } from "./index.js";
 import { DOMElements } from "./dom.js";
 
 class CreateToDo {
@@ -21,6 +20,8 @@ class CreateProject {
     }
 }
 
+export const userProjects = {};
+
 export const validationChecks = {
     checkNewProject: function(){
         if ((DOMElements.forms.projectInputs.title.value === '' && DOMElements.forms.projectInputs.desc.value === '') || (DOMElements.forms.projectInputs.title.value.length < 5 || DOMElements.forms.projectInputs.desc.value.length < 5)) return 0
@@ -40,8 +41,6 @@ DOMElements.buttons.submit.project.addEventListener('click', () => {
         DOMElements.forms.projectInputs.title.value,
         DOMElements.forms.projectInputs.desc.value
     );
-
-    console.log(userProjects);
 });
 
 DOMElements.buttons.submit.todo.addEventListener('click', function(){
