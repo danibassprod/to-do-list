@@ -1,5 +1,5 @@
-import { userProjects } from "./index.js";
-import { validationChecks } from "./logic";
+import { validationChecks } from "./logic.js";
+import { userProjects } from "./logic.js";
 
 export const DOMElements = {
     container: document.querySelector('#container'),
@@ -57,24 +57,6 @@ const DOMHandler = {
             DOMElements.container.appendChild(projectContainer);
         }
     },
-
-    addProjectListTodoForm: function(){
-
-        let arrayOfProjects = []
-
-        for (let key in userProjects) {
-            arrayOfProjects.push(userProjects[key].title)  
-        }
-
-        console.log(arrayOfProjects)
-        
-        console.log(userProjects)
-    },
-
-    removeProjectListTodoForm: function(){
-        const currentProjectList = document.querySelectorAll('.project-opt');
-        currentProjectList.forEach(project => DOMElements.forms.todoInputs.projectList.removeChild(project));
-    }
 }
 
 DOMElements.buttons.newProject.addEventListener('click', () => { DOMElements.forms.projectDialog.showModal(); });
@@ -87,7 +69,6 @@ DOMElements.buttons.cancelBtns.forEach(btn => btn.addEventListener('click', () =
 }));
 
 DOMElements.buttons.submit.project.addEventListener('click', () => { 
-    DOMHandler.removeProjectListTodoForm();
     DOMHandler.render.project();
-    DOMHandler.addProjectListTodoForm();
+    console.log(userProjects)
 });
