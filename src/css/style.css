@@ -67,9 +67,15 @@ button:active{ background: #cccccc; }
     right: 5%;
 }
 
-/* .create-btn:hover{
-    transform: scale(102%);
-} */
+.todo-close-btn {
+    position: absolute;
+    top: 5px;
+    transition: transform 0.1s;
+}
+
+.todo-close-btn:hover { transform: scale(1.1); }
+
+.todo-close-btn:active { transform: scale(1.0); }
 
 .project{
     height: 250px;
