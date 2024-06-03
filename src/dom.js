@@ -4,6 +4,7 @@ import { userProjects } from "./logic.js";
 export const DOMElements = {
     container: document.querySelector('#container'),
     projects: document.querySelectorAll('.project'),
+    todosDisplay: document.querySelector('#projectDisplay'),
     buttons: {
         newProject: document.querySelector('#nproject'),
         newTodo: document.querySelector('#ntodo'),
@@ -11,7 +12,8 @@ export const DOMElements = {
         submit: {
             project: document.querySelector('.send-project'),
             todo: document.querySelector('.send-todo')
-        }
+        },
+        closeBtn: document.querySelector('.todo-close-btn')
     },
     forms: {
         projectDialog: document.querySelector('#newProject'),
@@ -72,3 +74,5 @@ DOMElements.buttons.submit.project.addEventListener('click', () => {
     DOMHandler.render.project();
     console.log(userProjects)
 });
+
+DOMElements.buttons.closeBtn.addEventListener('click', function(){ DOMElements.todosDisplay.close(); })
