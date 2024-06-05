@@ -29,7 +29,7 @@ export const validationChecks = {
     checkNewTodo: function(){
         if ((DOMElements.forms.todoInputs.title.value === '' && DOMElements.forms.todoInputs.desc.value === '') || (DOMElements.forms.todoInputs.title.value.length < 3 || DOMElements.forms.todoInputs.desc.value.length < 5)) return 0
         if (DOMElements.forms.todoInputs.dueDate.value === '') return 0
-        if (DOMElements.forms.todoInputs.project.value === '') return 0
+        if (DOMElements.forms.todoInputs.projectList.value === '') return 0
     },
 }
 
@@ -47,13 +47,13 @@ DOMElements.buttons.submit.todo.addEventListener('click', function(){
 
     if (validationChecks.checkNewTodo() === 0) return
 
-    userProjects.defaultProject.todos.push(new CreateToDo(
+    userProjects.default.todos.push(new CreateToDo(
         DOMElements.forms.todoInputs.title.value,
         DOMElements.forms.todoInputs.desc.value,
         new Date().getFullYear(),
         DOMElements.forms.todoInputs.dueDate.value,
         DOMElements.forms.todoInputs.priority.value,
-        DOMElements.forms.todoInputs.project.value,
+        DOMElements.forms.todoInputs.projectList.value,
         DOMElements.forms.todoInputs.completed.value
     ))
 });
