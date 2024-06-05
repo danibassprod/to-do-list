@@ -1,19 +1,16 @@
 import './css/reset.css';
 import './css/style.css';
-import { CreateProject, CreateToDo } from './logic';
-// import { DOMElements } from './dom';
+import { CreateProject, CreateToDo, userProjects } from './logic';
+import { DOMElements } from './dom.js'
 
-export const userProjects = {};
+userProjects.default = new CreateProject('Default Project', 'Project for test purposes')
 
-userProjects.defaultProject = new CreateProject(
-    'Default Project', 
-    'You can use this project to test this app!'
-);
-
-userProjects.defaultProject.todos.push(new CreateToDo(
-    'Practice 15 minutes a day typing', 
-    'Use resources like Typing Club', 
-    new Date().getFullYear(), 
-    2025, 
-    3)
-);
+userProjects.default.todos.push(new CreateToDo(
+    'test title',
+    'test desc',
+    '31/12/1231',
+    '42/31/1351',
+    'high',
+    'default',
+    'no'
+))
