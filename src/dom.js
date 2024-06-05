@@ -59,6 +59,17 @@ const DOMHandler = {
             DOMElements.container.appendChild(projectContainer);
         }
     },
+
+    addProjectTodoList: function(){
+
+        if (validationChecks.checkNewProject() === 0) return 
+
+        const option = document.createElement('option')
+        option.textContent = DOMElements.forms.projectInputs.title.value
+        option.classList.add('project-opt')
+        option.setAttribute('value', DOMElements.forms.todoInputs.title.value)
+        DOMElements.forms.todoInputs.projectList.appendChild(option)
+    }
 }
 
 DOMElements.buttons.newProject.addEventListener('click', () => { DOMElements.forms.projectDialog.showModal(); });
@@ -72,7 +83,7 @@ DOMElements.buttons.cancelBtns.forEach(btn => btn.addEventListener('click', () =
 
 DOMElements.buttons.submit.project.addEventListener('click', () => { 
     DOMHandler.render.project();
-    console.log(userProjects)
+    DOMHandler.addProjectTodoList()
 });
 
 DOMElements.buttons.closeBtn.addEventListener('click', function(){ DOMElements.todosDisplay.close(); })
