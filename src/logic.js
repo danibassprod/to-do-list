@@ -1,4 +1,5 @@
 import { DOMElements } from "./dom.js";
+import { removeSpacesFromText } from "./dom.js";
 
 class CreateToDo {
     constructor(title = 'No title provided.', desc = 'No description provided', date = new Date().getFullYear(), dueDate, priority, project, completed) {
@@ -33,11 +34,15 @@ export const validationChecks = {
     },
 }
 
+export function getCurrentProjects(){
+    return userProjects
+};
+
 DOMElements.buttons.submit.project.addEventListener('click', () => { 
 
     if (validationChecks.checkNewProject() === 0) return
 
-    userProjects[DOMElements.forms.projectInputs.title.value] = new CreateProject(
+    userProjects[removeSpacesFromText(DOMElements.forms.projectInputs.title.value)] = new CreateProject(
         DOMElements.forms.projectInputs.title.value,
         DOMElements.forms.projectInputs.desc.value
     );
