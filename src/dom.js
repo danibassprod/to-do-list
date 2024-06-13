@@ -72,7 +72,7 @@ const DOMHandler = {
     removeProjectContent: function(){
         while (DOMElements.todosDisplayFieldset.childNodes.length > 0) {
             if (typeof DOMElements.todosDisplayFieldset.childNodes[0] !== 'undefined') {
-                DOMElements.todosDisplayFieldset.childNodes[0].remove()
+                DOMElements.todosDisplayFieldset.childNodes[0].remove();
             }
          }
     },
@@ -84,9 +84,39 @@ const DOMHandler = {
         for (let key in getCurrentProjects()){
             
           if (removeSpacesFromText(getCurrentProjects()[key].title) === removeSpacesFromText(this.childNodes[0].textContent)) {
-                
+                const legend = document.createElement('legend');
+                legend.textContent = getCurrentProjects()[key].title;
+
+                // Creates To dos and renders them
+
+                getCurrentProjects()[key].todos.forEach(function(todo){
+                    const todoDiv = document.createElement('div')
+                    todoDiv.classList.add('todo', `pri-${todo.priority}`)
+
+                    const title = document.createElement('p');
+                    const strong = document.createElement('strong');
+                    strong.textContent = `${todo.title}`;
+                    title.appendChild(strong)
+
+                    const date = document.createElement('p');
+                    date.textContent = `${todo.dueDate}`;
+
+                    const priority = document.createElement('p');
+                    priority.textContent = `${todo.priority.toUpperCase()}`;
+                    
+                    todoDiv.appendChild(title);
+                    todoDiv.appendChild(date);
+                    todoDiv.appendChild(priority);
+
+                    DOMElements.todosDisplayFieldset.appendChild(todoDiv);
+                    
+                })
+                    
+                DOMElements.todosDisplayFieldset.appendChild(legend);
           }
         }   
+
+        DOMElements.todosDisplay.showModal()
     },
 
     addProjectTodoList: function(){
@@ -96,7 +126,7 @@ const DOMHandler = {
         const option = document.createElement('option')
         option.textContent = DOMElements.forms.projectInputs.title.value
         option.classList.add('project-opt')
-        option.setAttribute('value', DOMElements.forms.todoInputs.title.value)
+        option.setAttribute('value', DOMElements.forms.projectInputs.title.value)
         DOMElements.forms.todoInputs.projectList.appendChild(option)
     }
 }
