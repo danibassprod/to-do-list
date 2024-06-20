@@ -52,15 +52,15 @@ DOMElements.buttons.submit.todo.addEventListener('click', function(){
 
     if (validationChecks.checkNewTodo() === 0) return
 
-    userProjects.default.todos.push(new CreateToDo(
-        DOMElements.forms.todoInputs.title.value,
-        DOMElements.forms.todoInputs.desc.value,
-        new Date().getFullYear(),
-        DOMElements.forms.todoInputs.dueDate.value,
-        DOMElements.forms.todoInputs.priority.value,
-        DOMElements.forms.todoInputs.projectList.value,
-        DOMElements.forms.todoInputs.completed.value
-    ))
+    userProjects[removeSpacesFromText(DOMElements.forms.projectInputs.title.value)].todos.push(new CreateToDo(
+            DOMElements.forms.todoInputs.title.value,
+            DOMElements.forms.todoInputs.desc.value,
+            new Date().getFullYear(),
+            DOMElements.forms.todoInputs.dueDate.value,
+            DOMElements.forms.todoInputs.priority.value,
+            DOMElements.forms.todoInputs.projectList.value,
+            DOMElements.forms.todoInputs.completed.value
+        ))
 });
 
 export { CreateProject, CreateToDo } 
