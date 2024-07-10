@@ -1,5 +1,7 @@
 import { validationChecks } from "./logic.js";
 import { getCurrentProjects } from "./logic.js";
+import Icon from './img/icons/edit.svg';
+import Icon2 from './img/icons/remove.svg';
 
 export const DOMElements = {
     container: document.querySelector('#container'),
@@ -103,13 +105,37 @@ const DOMHandler = {
 
                     const priority = document.createElement('p');
                     priority.textContent = `${todo.priority.toUpperCase()}`;
+
+                    const viewEditBtnContainer = document.createElement('div');
+                    viewEditBtnContainer.classList.add('view-edit-btn');
+
+                    // Creates view btn
+
+                    const viewBtn = document.createElement('button');
+                    viewBtn.classList.add('view');
+                    viewBtn.setAttribute('type', 'button');
+
+                    const viewBtnImg = new Image();
+                    viewBtnImg.src = Icon;
+                    viewBtn.appendChild(viewBtnImg);
+
+                    const viewBtn2 = document.createElement('button');
+                    viewBtn2.classList.add('edit');
+                    viewBtn2.setAttribute('type', 'button')
+
+                    const viewBtnImg2 = new Image();
+                    viewBtnImg2.src = Icon2;
+                    viewBtn2.appendChild(viewBtnImg2);
+
+                    viewEditBtnContainer.appendChild(viewBtn)
+                    viewEditBtnContainer.appendChild(viewBtn2)
                     
                     todoDiv.appendChild(title);
                     todoDiv.appendChild(date);
                     todoDiv.appendChild(priority);
+                    todoDiv.appendChild(viewEditBtnContainer);
 
-                    DOMElements.todosDisplayFieldset.appendChild(todoDiv);
-                    
+                    DOMElements.todosDisplayFieldset.appendChild(todoDiv);  
                 })
                     
                 DOMElements.todosDisplayFieldset.appendChild(legend);
@@ -146,10 +172,12 @@ DOMElements.buttons.cancelBtns.forEach(btn => btn.addEventListener('click', () =
 
 DOMElements.buttons.submit.project.addEventListener('click', () => { 
     DOMHandler.render.project();
-    DOMHandler.addProjectTodoList()
-    DOMHandler.projectEventListenerHandler()
+    DOMHandler.addProjectTodoList();
+    DOMHandler.projectEventListenerHandler();
 });
 
 DOMElements.buttons.closeBtn.addEventListener('click', function(){ DOMElements.todosDisplay.close(); })
 
-DOMHandler.projectEventListenerHandler()
+DOMHandler.projectEventListenerHandler();
+
+DOMElements.forms.projectInputs.title.value = 'default';
