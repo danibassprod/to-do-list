@@ -52,7 +52,7 @@ DOMElements.buttons.submit.todo.addEventListener('click', function(){
 
     if (validationChecks.checkNewTodo() === 0) return
 
-    userProjects[removeSpacesFromText(DOMElements.forms.projectInputs.title.value)].todos.push(new CreateToDo(
+    userProjects[removeSpacesFromText(DOMElements.forms.todoInputs.projectList.value)].todos.push(new CreateToDo(
             DOMElements.forms.todoInputs.title.value,
             DOMElements.forms.todoInputs.desc.value,
             new Date().getFullYear(),
