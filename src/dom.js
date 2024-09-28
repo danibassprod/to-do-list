@@ -1,4 +1,4 @@
-import { validationChecks } from "./logic.js";
+import { userProjects, validationChecks } from "./logic.js";
 import { getCurrentProjects } from "./logic.js";
 import Icon from './img/icons/edit.svg';
 import Icon2 from './img/icons/remove.svg';
@@ -33,7 +33,12 @@ export const DOMElements = {
             projectList: document.querySelector('#project'),
             completed: document.querySelector('#completed')
         }
+    },
+    currentDisplay: {
+        project: null,
+        todo: null
     }
+    
 };
 
 const DOMHandler = {
@@ -71,7 +76,7 @@ const DOMHandler = {
         document.querySelectorAll('.project').forEach(project => project.addEventListener('click', DOMHandler.renderProjectContent))
     },
 
-    removeProjectContent: function(){
+    removeRenderedProjectContent: function(){
         while (DOMElements.todosDisplayFieldset.childNodes.length > 0) {
             if (typeof DOMElements.todosDisplayFieldset.childNodes[0] !== 'undefined') {
                 DOMElements.todosDisplayFieldset.childNodes[0].remove();
@@ -81,11 +86,17 @@ const DOMHandler = {
 
     renderProjectContent: function(){
 
-        DOMHandler.removeProjectContent()
+        DOMHandler.removeRenderedProjectContent()
 
         for (let key in getCurrentProjects()){
             
           if (removeSpacesFromText(getCurrentProjects()[key].title) === removeSpacesFromText(this.childNodes[0].textContent)) {
+
+            // Stores current working project on currentDisplay obj
+
+            DOMElements.currentDisplay.project = [key][0];
+            // console.log(DOMElements.currentDisplay.project)
+            
                 const legend = document.createElement('legend');
                 legend.textContent = getCurrentProjects()[key].title;
 
@@ -139,8 +150,9 @@ const DOMHandler = {
                 })
                     
                 DOMElements.todosDisplayFieldset.appendChild(legend);
+                DOMHandler.showTodoInfo();
           }
-        }   
+        }
 
         DOMElements.todosDisplay.showModal()
     },
@@ -154,6 +166,12 @@ const DOMHandler = {
         option.classList.add('project-opt')
         option.setAttribute('value', DOMElements.forms.projectInputs.title.value)
         DOMElements.forms.todoInputs.projectList.appendChild(option)
+    },
+
+    showTodoInfo: function(){
+        document.querySelectorAll('.todo').forEach(todo => todo.addEventListener('click', function(){
+            // console.log(getCurrentProjects()[DOMElements.currentDisplay.project].todos)
+        }))
     }
 }
 

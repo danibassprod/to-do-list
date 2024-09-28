@@ -13,13 +13,3 @@ userProjects.default.todos.push(new CreateToDo(
     'default',
     'no'
 ))
-
-userProjects.default.todos.push(new CreateToDo(
-    'test lelelel',
-    'test dasdasd',
-    '31-12-1231',
-    '42-31-1351',
-    'mid',
-    'default',
-    'no'
-))
